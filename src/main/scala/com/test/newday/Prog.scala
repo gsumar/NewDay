@@ -13,7 +13,7 @@ object Prog {
   case class User (userId:Int, genge:String, age:Int, Occupation:Int, zipCode:String)
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("Simple Application").setMaster("local[2]")
+    val conf = new SparkConf().setAppName("NewDay exercise").setMaster("local[2]")
     val sc = new SparkContext(conf)
     val sqlContext = new HiveContext(sc)
     import sqlContext.implicits._
@@ -47,17 +47,15 @@ object Prog {
 
 
     // problem 3
-    val limitUDF = udf { (nums: mutable.WrappedArray[String], limit: Int) => nums.take(limit).map(x => x.split(" ")(1)) }
 
-
+    val limitAndFormatTitlesUDF = udf { (nums: mutable.WrappedArray[String], limit: Int) => nums.take(limit).map(x => x.split(" ")(1)) }
     movieRatings.registerTempTable("movieRatings")
 
     sqlContext.sql("select r.userId as userId, m.title as title, mr.avg as avg, CONCAT(mr.avg, ' ' ,m.title) as value " +
       "from movies m inner join movieRatings mr on m.movieId = mr.movieId " +
       "inner join ratings r on m.movieId = r.movieId ").registerTempTable("user_films")
-
     val fullListDF = sqlContext.sql("select userId, sort_array(collect_list(value), false) AS collected FROM user_films GROUP BY userId")
-    val onlyThreeDF = fullListDF.withColumn("films", limitUDF(fullListDF("collected"), lit(3)))
+    val onlyThreeDF = fullListDF.withColumn("films", limitAndFormatTitlesUDF(fullListDF("collected"), lit(3)))
     val usersWith3Films = onlyThreeDF.select("userId", "films")
 
     //problem4
