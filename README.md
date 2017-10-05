@@ -1,0 +1,35 @@
+Please find attached in the root of the project the jar newday_2.10-0.0.1.jar, with has been run in clouderas oficial virtual machine with belows command.
+
+spark-submit --class com.test.NewDay.Prog \
+--master yarn \
+newday_2.10-0.0.1.jar \
+/user/cloudera/newday/movies.dat \
+/user/cloudera/newday/ratings.dat \
+/user/cloudera/newday/users.dat \
+hdfs:///user/cloudera/newday/parquet/movies/ \
+hdfs:///user/cloudera/newday/parquet/ratings/ \
+hdfs:///user/cloudera/newday/parquet/users/ \
+hdfs:///user/cloudera/newday/parquet/moviesRatings/ \
+hdfs:///user/cloudera/newday/parquet/usersWith3Films/
+
+Notice the arguments:
+      - Source data for movies.
+      - Source data for ratings.
+      - Source data for users.
+      - Output for movies (exercise 1)
+      - Output for ratings (exercise 1)
+      - Output for users
+      - Output for movies with their average ratings (exercise 2)
+      - Output for users with the 3 films that are rated best. (exercise 3)
+      
+The source class is located in /src/main/scala/com/test/newday/Prog.scala.
+
+Being an exercise of hour, I assume that there was not important the quality of the code and I did in an easiest way that I could.
+
+Point of improvement.
+
+- Remove duplicate code by creating a correct architecure with a trait for the exercise one, that has duplicated code to create three tables.
+- Create some test with a little sample of data.
+- Find a way in exercise 3, of selecting the 3 items needed, without ordering all the list. Although I have found that the logical plan, from spark 1.5, has this situation under control and only select the first 3 item.
+
+Lets speak in the interview about this issues.
