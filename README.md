@@ -1,4 +1,4 @@
-Please find attached in the root of the project the jar newday_2.10-0.0.1.jar, with has been run in clouderas oficial virtual machine with belows command.
+Please find attached in the root of the project the jar newday_2.10-0.0.1.jar, with has been run in clouderas oficial virtual machine with belows command (The command is the basic one, without any complication).
 
 spark-submit --class com.test.NewDay.Prog \
 --master yarn \
