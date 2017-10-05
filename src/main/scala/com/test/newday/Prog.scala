@@ -1,9 +1,5 @@
 package com.test.NewDay
 
-/**
-  * Everyone's favourite wordcount example.
-  */
-
 import org.apache.spark._
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.hive.HiveContext
@@ -21,22 +17,23 @@ object Prog {
     val sc = new SparkContext(conf)
     val sqlContext = new HiveContext(sc)
     import sqlContext.implicits._
+    val fieldsTerminatedBy = "::"
 
     // problem 1
 
     val pathMovies = args(0)
     val moviesRDD = sc.textFile(pathMovies)
-    val moviesMap = moviesRDD.map(x => x.split("::")).map(x => Movie(x(0).toInt, x(1), x(2)))
+    val moviesMap = moviesRDD.map(x => x.split(fieldsTerminatedBy)).map(x => Movie(x(0).toInt, x(1), x(2)))
     val movies = moviesMap.toDF
 
     val pathRatings = args(1)
     val ratingsRDD = sc.textFile(pathRatings)
-    val ratingsMap = ratingsRDD.map(x => x.split("::")).map(x => Rating(x(0).toInt, x(1).toInt, x(2).toInt, x(3).toInt))
+    val ratingsMap = ratingsRDD.map(x => x.split(fieldsTerminatedBy)).map(x => Rating(x(0).toInt, x(1).toInt, x(2).toInt, x(3).toInt))
     val ratings = ratingsMap.toDF
 
     val pathUsers = args(2)
     val usersRDD = sc.textFile(pathUsers)
-    val usersMap = usersRDD.map(x => x.split("::")).map(x => User(x(0).toInt, x(1), x(2).toInt, x(3).toInt, x(4)))
+    val usersMap = usersRDD.map(x => x.split(fieldsTerminatedBy)).map(x => User(x(0).toInt, x(1), x(2).toInt, x(3).toInt, x(4)))
     val users = usersMap.toDF
 
     // problem 2
