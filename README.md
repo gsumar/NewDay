@@ -28,7 +28,7 @@ Being an exercise of hour, I assume that there was not important the quality of 
 
 Point of improvement.
 
-- Parametrize the spark configuration in order to execute in local or cluster mode as required. Or modify the configuration parameters with the content of the configuration file.
+- Parametrize the spark configuration in order to execute in local or cluster mode as required. Or modify the configuration parameters with the content of the configuration file. Currently always is executed in local. As in the code the parameter of Spark is overwritten.
 - Remove duplicate code by creating a correct architecure with a trait for the exercise one, that has duplicated code to create three tables, providing a functional code.
 - Split different responsabilities in diferent classes.
 - Create some test with a little sample of data.
