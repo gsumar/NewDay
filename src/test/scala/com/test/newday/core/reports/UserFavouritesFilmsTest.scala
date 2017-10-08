@@ -7,14 +7,14 @@ import org.scalatest.{FlatSpec, Matchers}
 class UserFavouritesFilmsTest extends FlatSpec with Matchers {
 
   "Testing a movie ratings aggregations" should "return 4 lines" in {
-    val movies = BasicTableLoader.load(TestHive,
+    val movies = BasicTableLoader.load(
       "src/test/resources/sources/movies.dat", BasicTableType.Movie)
 
-    val ratings = BasicTableLoader.load(TestHive,
+    val ratings = BasicTableLoader.load(
       "src/test/resources/sources/ratings.dat", BasicTableType.Rating)
 
-    val movieRatings = MovieRatings.register(TestHive, movies, ratings)
+    val movieRatings = MovieRatings.register(movies, ratings)
 
-    assert(UserFavouritesFilms.register(TestHive,movies,ratings,movieRatings).count() == 2)
+    assert(UserFavouritesFilms.register(movies,ratings,movieRatings).count() == 2)
   }
 }
