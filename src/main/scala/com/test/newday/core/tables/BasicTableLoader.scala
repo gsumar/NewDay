@@ -4,7 +4,7 @@ import com.test.newday.constants.TableType
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.hive.HiveContext
 
-object LoadTables {
+object BasicTableLoader {
 
 
   val fieldsTerminatedBy = "::"
