@@ -1,9 +1,9 @@
-package com.test.newday.constants
+package com.test.newday.environment
 
 import java.util.Properties
 
-import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.io.Source
 
