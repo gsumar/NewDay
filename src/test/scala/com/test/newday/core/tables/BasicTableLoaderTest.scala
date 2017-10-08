@@ -1,7 +1,5 @@
 package com.test.newday.core.tables
 
-
-import com.test.newday.constants.TableType
 import org.apache.spark.sql.hive.test.TestHive
 import org.scalatest.{FlatSpec, Matchers}
 class BasicTableLoaderTest extends FlatSpec with Matchers{

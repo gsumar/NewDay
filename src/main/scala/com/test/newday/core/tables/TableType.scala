@@ -1,4 +1,4 @@
-package com.test.newday.constants
+package com.test.newday.core.tables
 
 object TableType {
   sealed trait EnumVal

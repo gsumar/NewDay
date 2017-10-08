@@ -1,7 +1,6 @@
 package com.test.newday.core.reports
 
-import com.test.newday.constants.TableType
-import com.test.newday.core.tables.BasicTableLoader
+import com.test.newday.core.tables.{BasicTableLoader, TableType}
 import org.apache.spark.sql.hive.test.TestHive
 import org.scalatest.{FlatSpec, Matchers}
 
