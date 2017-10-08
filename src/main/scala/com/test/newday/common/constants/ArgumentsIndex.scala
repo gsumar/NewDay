@@ -1,4 +1,4 @@
-package com.test.newday.constants
+package com.test.newday.common.constants
 
 object ArgumentsIndex {
   val moviesPath : Int = 0

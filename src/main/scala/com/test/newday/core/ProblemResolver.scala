@@ -1,6 +1,6 @@
 package com.test.newday.core
 
-import com.test.newday.constants.ArgumentsIndex
+import com.test.newday.common.constants.ArgumentsIndex
 import com.test.newday.core.output.ParquetSaver
 import com.test.newday.core.reports.{MovieRatings, UserFavouritesFilms}
 import com.test.newday.core.tables.{BasicTableLoader, TableType}

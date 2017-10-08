@@ -29,7 +29,6 @@ object NewDayContext {
       case false => conf.setMaster(properties.getProperty(master))
       case _ =>
     }
-
     sc = new SparkContext(conf)
     sqlContext = new HiveContext(sc)
   }
