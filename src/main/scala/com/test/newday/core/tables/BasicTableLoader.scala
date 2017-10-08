@@ -6,11 +6,11 @@ import org.apache.spark.sql.hive.HiveContext
 object BasicTableLoader {
 
 
-  val fieldsTerminatedBy = "::"
+  private val fieldsTerminatedBy = "::"
 
-  case class Movie (movieId:Int, title:String, genre:String)
-  case class Rating (userId:Int, movieId:Int, rating:Int, timestamp:Int)
-  case class User (userId:Int, genge:String, age:Int, Occupation:Int, zipCode:String)
+  private case class Movie (movieId:Int, title:String, genre:String)
+  private case class Rating (userId:Int, movieId:Int, rating:Int, timestamp:Int)
+  private case class User (userId:Int, genge:String, age:Int, Occupation:Int, zipCode:String)
 
   def load(sqlContext:HiveContext, inputPath: String, table:BasicTableType.EnumVal): DataFrame = {
     import sqlContext.implicits._

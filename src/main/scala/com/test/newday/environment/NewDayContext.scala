@@ -12,9 +12,6 @@ object NewDayContext {
   var sc: SparkContext = _
   var sqlContext: HiveContext = _
 
-  val sparkAppName = "sparkAppName"
-  val master = "master"
-
   def init() = {
     var properties : Properties = null
 
@@ -24,6 +21,10 @@ object NewDayContext {
       properties = new Properties()
       properties.load(source.bufferedReader())
     }
+
+    val sparkAppName = "sparkAppName"
+    val master = "master"
+
     conf = new SparkConf().setAppName(properties.getProperty(sparkAppName))
     conf.contains("spark.master") match {
       case false => conf.setMaster(properties.getProperty(master))
