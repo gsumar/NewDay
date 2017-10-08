@@ -1,7 +1,6 @@
 package com.test.newday.core.reports
 
 import com.test.newday.core.tables.{BasicTableLoader, BasicTableType}
-import org.apache.spark.sql.hive.test.TestHive
 import org.scalatest.{FlatSpec, Matchers}
 
 class UserFavouritesFilmsTest extends FlatSpec with Matchers {
