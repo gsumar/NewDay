@@ -1,4 +1,4 @@
-package com.test.newday.output
+package com.test.newday.core.output
 
 import org.apache.spark.sql.DataFrame
 

@@ -1,4 +1,4 @@
-package com.test.newday.reports
+package com.test.newday.core.reports
 
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.hive.HiveContext

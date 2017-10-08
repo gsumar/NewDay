@@ -1,4 +1,4 @@
-package com.test.newday.tables
+package com.test.newday.core.tables
 
 
 import com.test.newday.constants.TableType

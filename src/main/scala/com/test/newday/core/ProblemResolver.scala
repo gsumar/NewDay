@@ -1,9 +1,9 @@
 package com.test.newday.core
 
 import com.test.newday.constants.{ArgumentsIndex, TableType}
-import com.test.newday.output.SaveAsParquet
-import com.test.newday.reports.{MovieRatings, UserFavouritesFilms}
-import com.test.newday.tables.LoadTables
+import com.test.newday.core.output.SaveAsParquet
+import com.test.newday.core.reports.{MovieRatings, UserFavouritesFilms}
+import com.test.newday.core.tables.LoadTables
 import org.apache.spark.sql.hive.HiveContext
 
 class ProblemResolver(args:Array[String], sqlContext: HiveContext) {
