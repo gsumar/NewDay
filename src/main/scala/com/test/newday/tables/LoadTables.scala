@@ -16,11 +16,12 @@ object LoadTables {
   def load(sqlContext:HiveContext, inputPath: String, table:TableType.EnumVal): DataFrame = {
     import sqlContext.implicits._
     val rdd = sqlContext.sparkContext.textFile(inputPath)
+    val rddSplit = rdd.map(x => x.split(fieldsTerminatedBy))
 
     table match  {
-      case TableType.Movie => rdd.map(x => x.split(fieldsTerminatedBy)).map(x => Movie(x(0).toInt, x(1), x(2))).toDF()
-      case TableType.Rating => rdd.map(x => x.split(fieldsTerminatedBy)).map(x => Rating(x(0).toInt, x(1).toInt, x(2).toInt, x(3).toInt)).toDF()
-      case TableType.User => rdd.map(x => x.split(fieldsTerminatedBy)).map(x => User(x(0).toInt, x(1), x(2).toInt, x(3).toInt, x(4))).toDF()
+      case TableType.Movie => rddSplit.map(x => Movie(x(0).toInt, x(1), x(2))).toDF()
+      case TableType.Rating => rddSplit.map(x => Rating(x(0).toInt, x(1).toInt, x(2).toInt, x(3).toInt)).toDF()
+      case TableType.User => rddSplit.map(x => User(x(0).toInt, x(1), x(2).toInt, x(3).toInt, x(4))).toDF()
     }
   }
 }
